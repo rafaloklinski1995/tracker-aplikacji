@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Osobisty tracker ofert pracy i wysłanych aplikacji."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Tracker aplikacji o pracę</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Tracker aplikacji o pracę</h1>
+      <p>Zapisuj oferty i kontroluj postępy swoich rekrutacji.</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Dodaj aplikację</h2>
+
+        <form id="formularz-aplikacji">
+          <label for="firma">Nazwa firmy</label>
+          <input id="firma" name="firma" type="text" required />
+
+          <label for="stanowisko">Stanowisko</label>
+          <input id="stanowisko" name="stanowisko" type="text" required />
+
+          <label for="status">Status aplikacji</label>
+          <select id="status" name="status">
+            <option value="do-wyslania">Do wysłania</option>
+            <option value="wyslana">Wysłana</option>
+            <option value="rozmowa">Rozmowa rekrutacyjna</option>
+            <option value="zakonczona">Zakończona</option>
+          </select>
+          <label for="data">Data aplikacji</label>
+          <input id="data" name="data" type="date" required />
+
+          <button type="submit">Dodaj aplikację</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Moje aplikacje</h2>
+
+        <p id="brak-aplikacji">Nie masz jeszcze zapisanych aplikacji.</p>
+
+        <div id="lista-aplikacji"></div>
+      </section>
+    </main>
+  </body>
+</html>
