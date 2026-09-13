@@ -5,11 +5,23 @@ const poleStatus = document.querySelector("#status");
 const poleData = document.querySelector("#data");
 const listaAplikacji = document.querySelector("#lista-aplikacji");
 const komunikatBraku = document.querySelector("#brak-aplikacji");
+const liczbaWszystkich = document.querySelector("#liczba-wszystkich");
+const liczbaRozmow = document.querySelector("#liczba-rozmow");
 
 let aplikacje = JSON.parse(localStorage.getItem("aplikacje")) || [];
 
 function zapiszAplikacje() {
   localStorage.setItem("aplikacje", JSON.stringify(aplikacje));
+}
+
+function aktualizujStatystyki() {
+  liczbaWszystkich.textContent = aplikacje.length;
+
+  const rozmowy = aplikacje.filter(
+    (aplikacja) => aplikacja.status === "Rozmowa rekrutacyjna",
+  );
+
+  liczbaRozmow.textContent = rozmowy.length;
 }
 
 function wyswietlAplikacje() {
@@ -54,6 +66,12 @@ function wyswietlAplikacje() {
       zapiszAplikacje();
     });
 
+    wyborStatusu.addEventListener("change", () => {
+      aplikacja.status = wyborStatusu.value;
+      zapiszAplikacje();
+      aktualizujStatystyki();
+    });
+
     const opisStatusu = document.createElement("p");
     opisStatusu.textContent = `Status: ${aplikacja.status}`;
 
@@ -84,6 +102,8 @@ function wyswietlAplikacje() {
 
     listaAplikacji.append(karta);
   });
+
+  aktualizujStatystyki();
 }
 
 formularz.addEventListener("submit", (zdarzenie) => {

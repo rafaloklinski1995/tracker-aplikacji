@@ -90,3 +90,29 @@ button:hover {
 .przycisk-usun:hover {
   background-color: #b91c1c;
 }
+.statystyki {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.statystyki p {
+  margin: 0;
+  padding: 18px;
+  background-color: #eff6ff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.statystyki strong {
+  display: block;
+  margin-top: 8px;
+  color: #1d4ed8;
+  font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+  .statystyki {
+    grid-template-columns: 1fr;
+  }
+}
